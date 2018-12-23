@@ -32,7 +32,7 @@
                 <!-- 评论数和访问量 -->
                 <div class="timer">
                   <span>{{item.reply_count}} {{item.visit_count}}</span>
-                  <span>{{item.last_reply_at }}</span>
+                  <span>{{item.last_reply_at | TimeData }}</span>
                 </div>
               </router-link>
             </section>
@@ -74,11 +74,11 @@ export default {
     loadMore () {
       this.loading = false
       setTimeout(() => {
-        let last = this.list[this.list.length - 1]
-        for (let i = 1; i <= 10; i++) {
-          this.list.push(last + i)
-        }
-        this.loading = false
+        // let last = this.list[this.list.length - 1]
+        // for (let i = 1; i <= 10; i++) {
+        //   this.list.push(last + i)
+        // }
+        // this.loading = false
       }, 2500)
     },
     // 获取数据
@@ -86,11 +86,11 @@ export default {
       this.$axios
         .get(this.url)
         .then((res) => {
-          if (res.status === '200') {
+          if (res.status === 200) {
             let _data = res.data
             this.list = _data.data
           } else {
-            this.$tost('请求失败！稍候重试')
+            this.$toast('请求失败！稍候重试')
           }
         })
     }

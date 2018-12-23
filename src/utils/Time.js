@@ -3,7 +3,7 @@
  * @param {String} str
  * @returns 格式化后的时间
  */
-const TimeData = (str) => {
+export const TimeData = (str) => {
   if (!str) return ''
   var date = new Date(str)
   var time = new Date().getTime() - date.getTime() // 现在的时间-传入的时间 = 相差的时间（单位 = 毫秒）
@@ -29,25 +29,20 @@ const TimeData = (str) => {
 /*
 *格式化时间模块
 */
-const formatData = function (format) {
-  let args = {
-    'M+': this.getMonth() + 1,
-    'd+': this.getDate(),
-    'h+': this.getHours(),
-    'm+': this.getMinutes(),
-    's+': this.getSeconds(),
-    'q+': Math.floor((this.getMonth() + 3) / 3), // quarter
-    'S': this.getMilliseconds()
-  }
-  if (/(y+)/.test(format)) format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length))
-  for (let i in args) {
-    let n = args[i]
-    if (new RegExp('(' + i + ')').test(format)) { format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? n : ('00' + n).substr(('' + n).length)) }
-  }
-  return format
-}
-
-export default {
-  TimeData: TimeData,
-  formatData: formatData
-}
+// const formatData = function (format) {
+//   let args = {
+//     'M+': this.getMonth() + 1,
+//     'd+': this.getDate(),
+//     'h+': this.getHours(),
+//     'm+': this.getMinutes(),
+//     's+': this.getSeconds(),
+//     'q+': Math.floor((this.getMonth() + 3) / 3), // quarter
+//     'S': this.getMilliseconds()
+//   }
+//   if (/(y+)/.test(format)) format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length))
+//   for (let i in args) {
+//     let n = args[i]
+//     if (new RegExp('(' + i + ')').test(format)) { format = format.replace(RegExp.$1, RegExp.$1.length === 1 ? n : ('00' + n).substr(('' + n).length)) }
+//   }
+//   return format
+// }
