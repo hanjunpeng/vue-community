@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui'
 export default {
   data: function () {
     return {
@@ -90,7 +91,10 @@ export default {
             let _data = res.data
             this.list = _data.data
           } else {
-            this.$toast('请求失败！稍候重试')
+            Toast({
+              message: '请求失败',
+              position: 'bottom'
+            })
           }
         })
     }
